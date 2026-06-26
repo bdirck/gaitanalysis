@@ -1,71 +1,76 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://raw.githubusercontent.com/bdirck/gaitanalysis/main/gait-report-v1.schema.json",
-  "title": "BEC Gait Analysis V1 Report Interpretation Output",
-  "description": "Structured output schema for GPT-generated Backroads Endurance Company single-test gait analysis report interpretation fields.",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "executive_summary_html",
-    "snapshot_summary_html",
-    "recommendation_rationale_html",
-    "final_recommendation_title",
-    "final_recommendation_html",
-    "final_recommendation_choice",
-    "final_recommendation_confidence",
-    "next_steps_html",
-    "data_quality_note_html"
-  ],
-  "properties": {
-    "executive_summary_html": {
-      "type": "string",
-      "description": "One to two short HTML paragraphs summarizing the biggest finding, what looked good, and the main athlete takeaway."
-    },
-    "snapshot_summary_html": {
-      "type": "string",
-      "description": "Concise HTML bullet list summarizing key gait analysis findings."
-    },
-    "recommendation_rationale_html": {
-      "type": "string",
-      "description": "HTML explanation connecting the recommendation to impact loading, symmetry, stability, cadence/rhythm, shoe context, comfort/fit, symptoms, and data quality."
-    },
-    "final_recommendation_title": {
-      "type": "string",
-      "description": "Short recommendation title, 4 to 10 words, no period."
-    },
-    "final_recommendation_html": {
-      "type": "string",
-      "description": "One to three HTML paragraphs giving practical athlete-facing guidance."
-    },
-    "final_recommendation_choice": {
-      "type": "string",
-      "description": "Primary recommendation category.",
-      "enum": [
-        "shoe_guidance",
-        "cadence_or_form_focus",
-        "strength_or_control_focus",
-        "load_management",
-        "medical_follow_up",
-        "no_major_change",
-        "mixed_recommendation"
-      ]
-    },
-    "final_recommendation_confidence": {
-      "type": "string",
-      "description": "Confidence level for the final recommendation.",
-      "enum": [
-        "low",
-        "moderate",
-        "high"
-      ]
-    },
-    "next_steps_html": {
-      "type": "string",
-      "description": "Short HTML bullet list of practical next steps."
-    },
-    "data_quality_note_html": {
-      "type": "string",
-      "description": "Short HTML note explaining whether the data was successfully extracted and suitable for interpretation."
-    }
-  }
+"$schema": "https://json-schema.org/draft/2020-12/schema",
+"$id": "https://raw.githubusercontent.com/bdirck/gaitanalysis/main/gait-report-v1.schema.json",
+"title": "BEC Gait Analysis V1 Report Interpretation Output",
+"description": "Structured output schema for GPT-generated Backroads Endurance Company single-test gait analysis report interpretation fields.",
+"type": "object",
+"additionalProperties": false,
+"required": [
+"executive_summary_html",
+"snapshot_summary_html",
+"injury_considerations_html",
+"recommendation_rationale_html",
+"final_recommendation_title",
+"final_recommendation_html",
+"final_recommendation_choice",
+"final_recommendation_confidence",
+"next_steps_html",
+"data_quality_note_html"
+],
+"properties": {
+"executive_summary_html": {
+"type": "string",
+"description": "One to two short HTML paragraphs summarizing the biggest finding, what looked good, and the main athlete takeaway."
+},
+"snapshot_summary_html": {
+"type": "string",
+"description": "Concise HTML bullet list summarizing key gait analysis findings."
+},
+"injury_considerations_html": {
+"type": "string",
+"description": "Short HTML section explaining how reported injury or symptom context relates to the measured gait findings. This should not diagnose injury or claim that gait metrics caused pain. If no injury is reported and no pain occurred during the test, return an empty string."
+},
+"recommendation_rationale_html": {
+"type": "string",
+"description": "HTML explanation connecting the recommendation to impact loading, symmetry, stability, cadence/rhythm, shoe context, comfort/fit, symptoms, injury context when available, and data quality."
+},
+"final_recommendation_title": {
+"type": "string",
+"description": "Short recommendation title, 4 to 10 words, no period."
+},
+"final_recommendation_html": {
+"type": "string",
+"description": "One to three HTML paragraphs giving practical athlete-facing guidance."
+},
+"final_recommendation_choice": {
+"type": "string",
+"description": "Primary recommendation category.",
+"enum": [
+"shoe_guidance",
+"cadence_or_form_focus",
+"strength_or_control_focus",
+"load_management",
+"medical_follow_up",
+"no_major_change",
+"mixed_recommendation"
+]
+},
+"final_recommendation_confidence": {
+"type": "string",
+"description": "Confidence level for the final recommendation.",
+"enum": [
+"low",
+"moderate",
+"high"
+]
+},
+"next_steps_html": {
+"type": "string",
+"description": "Short HTML bullet list of practical next steps."
+},
+"data_quality_note_html": {
+"type": "string",
+"description": "Short HTML note explaining whether the data was successfully extracted and suitable for interpretation."
+}
+}
 }
